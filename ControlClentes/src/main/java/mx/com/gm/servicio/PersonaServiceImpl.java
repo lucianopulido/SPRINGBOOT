@@ -9,29 +9,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PersonaServiceImpl implements PersonaService {
-    
-    @Autowired //injeccion de dependencia
+
+    @Autowired
     private PersonaDao personaDao;
     
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public List<Persona> listarPersonas() {
         return (List<Persona>) personaDao.findAll();
     }
-    @Transactional
+
     @Override
+    @Transactional
     public void guardar(Persona persona) {
         personaDao.save(persona);
     }
-    @Transactional
+
     @Override
+    @Transactional
     public void eliminar(Persona persona) {
         personaDao.delete(persona);
     }
-    @Transactional(readOnly = true)
+
     @Override
+    @Transactional(readOnly = true)
     public Persona encontrarPersona(Persona persona) {
         return personaDao.findById(persona.getId()).orElse(null);
     }
-    
 }

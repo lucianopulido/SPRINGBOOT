@@ -16,7 +16,7 @@ public class PersonaServiceImpl implements PersonaService {
     @Transactional(readOnly = true)
     @Override
     public List<Persona> listarPersonas() {
-        return (List<Persona>) personaDao.findAll();
+        return  (List<Persona>) personaDao.findAll();
     }
 
     @Transactional
